@@ -48,3 +48,4 @@ ami a Reservation táblában a ParkingSpot tábla id-jára mutat.
 - Lemondás esetén a foglalás rekordja megmarad, csak a status vált
   cancelled-re 
 
+ 

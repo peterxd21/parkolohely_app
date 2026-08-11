@@ -1,3 +1,4 @@
+#schemas.py: "formailag helyes-e ez az adat?" (típusok, kötelező mezők, alapvető formátum)
 from datetime import datetime
 from pydantic import BaseModel, field_validator
 

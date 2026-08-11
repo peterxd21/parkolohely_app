@@ -1,4 +1,6 @@
-# ez a reteg dolgozik az adatbazissal / jogosultsag ellenorzes
+# ez a reteg dolgozik az adatbazissal / jogosultsag ellenorzes, crud.py: "megengedett-e ez a rendszer szabályai szerint?" (ütközés, jogosultság, létezik-e a hely)
+#         ↓ (ha igen)
+# adatbázis: mentés
 from sqlalchemy.orm import Session
 from app import models
 
