@@ -18,3 +18,24 @@ class ReservationCreate(BaseModel):
         return end_time
 
 
+class ReservationOut(BaseModel):
+    id: int
+    spot_id: int
+    requester: str
+    requester_group: str | None
+    start_time: datetime
+    end_time: datetime
+    status: str
+
+    class Config:
+        from_attributes = True
+
+
+class ParkingSpotOut(BaseModel):
+    id: int
+    code: str
+    restriction: str | None
+    active: bool
+
+    class Config:
+        from_attributes = True
