@@ -27,7 +27,7 @@
 | id | INT, PK | Egyedi azonosító, automatikusan generált |
 | spot_id | INT, FK → parking_spots.id | Melyik parkolóhelyre szól a foglalás |
 | requester | VARCHAR(100) | Kérelmező neve/azonosítója |
-| requester_group | VARCHAR(50), NULL | Kérelmező csoportja — korlátozott helyeknél ennek egyeznie kell a hely `restriction` mezőjével |
+| requester_group | VARCHAR(50), NULL | Kérelmező csoportja korlátozott helyeknél ennek egyeznie kell a hely restriction mezőjével |
 | start_time | DATETIME | Foglalás kezdete |
 | end_time | DATETIME | Foglalás vége |
 | status | ENUM('confirmed', 'cancelled') | Foglalás állapota |
@@ -48,4 +48,23 @@ ami a Reservation táblában a ParkingSpot tábla id-jára mutat.
 - Lemondás esetén a foglalás rekordja megmarad, csak a status vált
   cancelled-re 
 
- 
+ ## 5. Rétegek
+
+| Fájl | Felelősség |
+|---|---|
+| database.py | Kapcsolat a MySQL-lel |
+| models.py | Táblák szerkezete |
+| crud.py | Üzleti logika (ütközés, jogosultság, mentés) — HTTP-független, ValueError-t dob hiba esetén |
+| schemas.py | Bemenet/kimenet formai validálása |
+| seed.py | Kezdő adatok betöltése induláskor |
+| main.py | HTTP végpontok, összeköti a fenti rétegeket |
+
+## 6. API végpontok
+
+| Metódus | Végpont | Leírás |
+|---|---|---|
+| GET | /parking-spots | Helyek listázása |
+| GET | /parking-spots/{spot_id}/reservations | Egy hely foglalásai |
+| POST | /reservations | Foglalás létrehozása |
+| DELETE | /reservations/{reservation_id} | Foglalás lemondása (soft delete) |
+
